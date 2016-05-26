@@ -7,11 +7,6 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller 
 {
-
-	public function getDashboard()
-	{
-		return view('dashboard');
-	}
 	public function postSignUp(Request $request) 
 	{
 		$this->validate($request, [
@@ -47,6 +42,17 @@ class UserController extends Controller
 		}
 
 		return redirect()->back();
+	}
+
+	public function getLogout() 
+	{
+		Auth::logout();
+		return redirect()->route('home');
+	}
+
+	public function getAccount() 
+	{
+		return view('account', ['user' => Auth::user()]);
 	}
 }
 
