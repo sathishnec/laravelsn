@@ -12,7 +12,6 @@ class User extends Model implements Authenticatable
 	// Also change it on the config/auth.php 'providers' array
     //protected $table = "User2";
 
-
     use \Illuminate\Auth\Authenticatable;
 
     public function posts() 
@@ -20,7 +19,8 @@ class User extends Model implements Authenticatable
     	return $this->hasMany('App\Post');
     }
 
-
-
-
+    public function likes()
+    {
+        return $this->hasMany('App\Like');
+    }
 }
